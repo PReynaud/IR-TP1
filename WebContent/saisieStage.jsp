@@ -7,10 +7,12 @@
     <title>Ajout d'un stage</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/main.js" type="text/javascript"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
 </head>
 
 <body onLoad="Chargement();">
@@ -58,7 +60,10 @@
             </tr>
             <tr>
             <td>Date de début du stage</td>
-             <td><input type="text" name="datedebut" value="${stage.datedebut}" id="datedebut" placeholder="yyyy/mm/dd" required/></td>
+             <td>
+                 <input type="text" name="datedebut" value="${stage.datedebut}" id="datedebut" placeholder="yyyy/mm/dd" required/>
+                 <input id="dateNaissance" name="dateNaissance" type="text" placeholder="Date de naissance" required>
+             </td>
              </tr>
               <tr>
               <td>Date de fin de stage</td>
