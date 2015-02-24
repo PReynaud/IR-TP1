@@ -1,0 +1,20 @@
+.row{
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#footer{
+    bottom: 0;
+    margin-bottom: 0%;
+    width: 100%;
+    position: absolute;
+}
+
+#conteneurFooter{
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #858585;
+}
