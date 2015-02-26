@@ -4,6 +4,10 @@
     margin-bottom: 10px;
 }
 
+.table-responsive{
+    padding-right: 50px;
+}
+
 #footer{
     bottom: 0;
     margin-bottom: 0%;

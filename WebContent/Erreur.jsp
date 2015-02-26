@@ -5,6 +5,6 @@
 </head>
 <body>
     <h2>There is an error in the application, please contact the administrator</h2>
-    <h1>${MesErreurs}</h1>
+    <h3>${MesErreurs}</h3>
 </body>
 </html>

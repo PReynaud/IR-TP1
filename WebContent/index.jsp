@@ -50,7 +50,7 @@
     </div>
 
     <div class="navbar navbar-inverse navbar-default" id="footer">
-        <div id="conteneurFooter">TP1 Informatique répartie - Pierre REYNAUD - Février 2015</div>
+        <div id="conteneurFooter">TP1 Informatique répartie - Pierre REYNAUD - Dimitri RODARIE - Février 2015</div>
     </div>
 </body>
 </html> 

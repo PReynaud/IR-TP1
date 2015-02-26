@@ -46,41 +46,43 @@ pageEncoding="ISO-8859-1" %>
 		<h2>Listing&nbsp;des Stages</h2>
 	</p>
 
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>Numero</th>
-				<th>Libellé</th>
-				<th>Date début</th>
-				<th>Date fin</th>
-				<th>Nombre de places</th>
-				<th>Nombre d'inscrits</th>
-			</tr>
-		</thead>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Numero</th>
+                    <th>Libellé</th>
+                    <th>Date début</th>
+                    <th>Date fin</th>
+                    <th>Nombre de places</th>
+                    <th>Nombre d'inscrits</th>
+                </tr>
+            </thead>
 
-		<tbody>
-			<c:forEach items="${liste}" var="item">
-			<tr>
-				<td>${item.id}</td>
-				<td>${item.libelle}</td>
-				<td>
-					<fmt:formatDate type="both" dateStyle="short"
-					timeStyle="short" value="${item.datedebut}" pattern="dd/MM/yyyy"/>
-				</td>
-				<td>
-					<fmt:formatDate type="both" dateStyle="short"
-					timeStyle="short" value="${item.datefin}" pattern="dd/MM/yyyy"/>
-				</td>
-				<td>${item.nbplaces}</td>
-				<td>${item.nbinscrits}</td>
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+            <tbody>
+                <c:forEach items="${liste}" var="item">
+                <tr>
+                    <td>${item.id}</td>
+                    <td>${item.libelle}</td>
+                    <td>
+                        <fmt:formatDate type="both" dateStyle="short"
+                        timeStyle="short" value="${item.datedebut}" pattern="dd/MM/yyyy"/>
+                    </td>
+                    <td>
+                        <fmt:formatDate type="both" dateStyle="short"
+                        timeStyle="short" value="${item.datefin}" pattern="dd/MM/yyyy"/>
+                    </td>
+                    <td>${item.nbplaces}</td>
+                    <td>${item.nbinscrits}</td>
+                </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div class="navbar navbar-inverse navbar-default" id="footer">
-	<div id="conteneurFooter">TP1 Informatique répartie - Pierre REYNAUD - Février 2015</div>
+	<div id="conteneurFooter">TP1 Informatique répartie - Pierre REYNAUD - Dimitri RODARIE - Février 2015</div>
 </div>
 </body>
 </html>
