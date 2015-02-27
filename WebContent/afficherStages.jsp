@@ -49,8 +49,8 @@ pageEncoding="ISO-8859-1" %>
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th> Numero</th>
-				<th> Libellé</th>
+				<th>Numero</th>
+				<th>Libellé</th>
 				<th>Date début</th>
 				<th>Date fin</th>
 				<th>Nombre de places</th>
