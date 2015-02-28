@@ -82,6 +82,17 @@ public class Controleur extends HttpServlet {
                 destinationPage = "/Erreur.jsp";
             }
 
+        } else if (RECHERCHER_STAGE.equals(actionName)) {
+            try{
+                Stage unStage = new Stage();
+                request.setAttribute("affichageListe", 1);
+                listeStages = unStage.rechercheLesStages();
+                request.setAttribute("liste", listeStages);
+                destinationPage= "/rechercherStages.jsp";
+            } catch (MonException e){
+                request.setAttribute("MesErreurs", e.getMessage());
+                destinationPage = "/Erreur.jsp";
+            }
         }
         // Redirection vers la page jsp appropriee
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
