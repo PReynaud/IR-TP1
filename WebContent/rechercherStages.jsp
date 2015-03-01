@@ -19,47 +19,55 @@
 <body>
 <jsp:include page='/header.jsp' flush="true"/>
 
-<div class="row">
-    <p align="center">
-    <h2>Recherche des Stages</h2>
-    </p>
+    <div class="row">
+        <h2>Recherche des Stages</h2>
+    </div>
 
-    <c:if test="${liste.size() > 0}">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Numero</th>
-                    <th>Libellé</th>
-                    <th>Date début</th>
-                    <th>Date fin</th>
-                    <th>Nombre de places</th>
-                    <th>Nombre d'inscrits</th>
-                </tr>
-                </thead>
+    <div class="row">
+        <form action="Controleur" method="GET">
+            <input type="hidden" name="action" value="rechercheStage"  id="action"/>
+            <input type="text" name="recherche" value="${recherche.id}" id="id" placeholder=""/>
+            <input type="submit" value="Rechercher"/>
+        </form>
+    </div>
 
-                <tbody>
-                <c:forEach items="${liste}" var="item">
+    <div class="row">
+        <c:if test="${liste.size() > 0}">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
                     <tr>
-                        <td>${item.id}</td>
-                        <td>${item.libelle}</td>
-                        <td>
-                            <fmt:formatDate type="both" dateStyle="short"
-                                            timeStyle="short" value="${item.datedebut}" pattern="dd/MM/yyyy"/>
-                        </td>
-                        <td>
-                            <fmt:formatDate type="both" dateStyle="short"
-                                            timeStyle="short" value="${item.datefin}" pattern="dd/MM/yyyy"/>
-                        </td>
-                        <td>${item.nbplaces}</td>
-                        <td>${item.nbinscrits}</td>
+                        <th>Numero</th>
+                        <th>Libellé</th>
+                        <th>Date début</th>
+                        <th>Date fin</th>
+                        <th>Nombre de places</th>
+                        <th>Nombre d'inscrits</th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-    </c:if>
-</div>
+                    </thead>
+
+                    <tbody>
+                    <c:forEach items="${liste}" var="item">
+                        <tr>
+                            <td>${item.id}</td>
+                            <td>${item.libelle}</td>
+                            <td>
+                                <fmt:formatDate type="both" dateStyle="short"
+                                                timeStyle="short" value="${item.datedebut}" pattern="dd/MM/yyyy"/>
+                            </td>
+                            <td>
+                                <fmt:formatDate type="both" dateStyle="short"
+                                                timeStyle="short" value="${item.datefin}" pattern="dd/MM/yyyy"/>
+                            </td>
+                            <td>${item.nbplaces}</td>
+                            <td>${item.nbinscrits}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </c:if>
+    </div>
 
 <jsp:include page='/footer.jsp' flush="true"/>
 </body>

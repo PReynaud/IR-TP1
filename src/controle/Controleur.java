@@ -24,7 +24,7 @@ public class Controleur extends HttpServlet {
     private static final String SAISIE_STAGE = "saisieStage";
     private static final String AFFICHER_STAGE = "afficheStage";
     private static final String RECHERCHER_STAGE = "rechercheStage";
-    private static final String CHERCHER_STAGE = "chercheStage";
+    private static final String CHERCHER_TYPE = "recherche";
     private static final String AJOUT_STAGE = "ajoutStage";
     private static final String MODIFIER_STAGE = "modifierStage";
     private static final String ERROR_PAGE = null;
@@ -49,6 +49,8 @@ public class Controleur extends HttpServlet {
         String destinationPage = ERROR_PAGE;
         List<Stage> listeStages = null;
         // execute l'action
+
+        Map<String, String[]> parameters = request.getParameterMap();
 
         if (SAISIE_STAGE.equals(actionName)) {
             request.setAttribute("stage", new Stage());
@@ -86,7 +88,13 @@ public class Controleur extends HttpServlet {
             try{
                 Stage unStage = new Stage();
                 request.setAttribute("affichageListe", 1);
-                listeStages = unStage.rechercheLesStages();
+                if(parameters.size() > 1){
+                    String parametreRecherche = request.getParameter(CHERCHER_TYPE);
+                    listeStages = unStage.rechercheLesStages(parametreRecherche);
+                }
+                else{
+                    listeStages = unStage.rechercheLesStages();
+                }
                 request.setAttribute("liste", listeStages);
                 destinationPage= "/rechercherStages.jsp";
             } catch (MonException e){
