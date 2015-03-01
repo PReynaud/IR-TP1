@@ -41,14 +41,13 @@ pageEncoding="ISO-8859-1"%>
 				<div class="row">
 					<div class="col-sm-2">Date de début du stage</div>
 					<div class="col-sm-2">
-						<input type="text" name="datedebut" value="${stage.datedebut}" id="datedebut" placeholder="yyyy/mm/dd" required/>
-						<input id="dateNaissance" name="dateNaissance" type="text" placeholder="Date de naissance" required>
+						<input id="datedebut" name="datedebut" value="${stage.datedebut}" type="text" placeholder="Date de naissance" required>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-2">Date de fin de stage</div>
 					<div class="col-sm-2">
-						<input type="text" name="datefin" value="${stage.datefin}" id="datefin" placeholder="yyyy/mm/dd" required/>
+                        <input id="datefin" name="datefin" value="${stage.datefin}" type="text" placeholder="Date de naissance" required>
 					</div>
 				</div>
 				<div class="row">

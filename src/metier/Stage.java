@@ -22,23 +22,19 @@ public class Stage {
         return nbplaces;
     }
 
-
     public void setNbplaces(int nbplaces) {
         this.nbplaces = nbplaces;
     }
 
-
     public int getNbinscrits() {
         return nbinscrits;
     }
-
 
     public void setNbinscrits(int nbinscrits) {
         this.nbinscrits = nbinscrits;
     }
 
     private int nbinscrits;
-
 
     public Stage(String id, String libelle, Date datedebut, Date datefin,
                  int nbplaces, int nbinscrits) {
@@ -50,15 +46,11 @@ public class Stage {
         this.nbinscrits = nbinscrits;
     }
 
-
     public String getId() {
         return id;
     }
 
-    public Stage() {
-
-        // TODO Auto-generated constructor stub
-    }
+    public Stage() {}
 
     public void setId(String id) {
         this.id = id;
@@ -89,7 +81,7 @@ public class Stage {
     }
 
 	
-	/* traitements m�tier */
+	/* traitements métier */
 
     public void insertionStage() throws MonException {
 
@@ -111,16 +103,53 @@ public class Stage {
         }
     }
 
+    public void modificationStage(String id) throws MonException {
+        try {
+            String mysql = "";
+            DateFormat dateFormatpers = new SimpleDateFormat("yyyy-MM-dd");
+            String dd = dateFormatpers.format(this.getDatedebut());
+            String df = dateFormatpers.format(this.getDatefin());
+
+            mysql = "UPDATE stages ";
+            mysql += "SET libelle = '" + this.getLibelle() +"', ";
+            mysql += "datedebut = '" + dd +"', ";
+            mysql += "datefin = '" + df +"', ";
+            mysql += "nbplaces = '" + this.getNbplaces() +"', ";
+            mysql += "nbinscrits = '" + this.getNbinscrits() +"' ";
+            mysql += "WHERE id='" + id + "'";
+            DialogueBd.insertionBD(mysql);
+
+        } catch (MonException e) {
+            throw e;
+        }
+    }
+
     public List<Stage> rechercheLesStages() throws MonException, ParseException {
+        try {
+            String mysql = "";
+            mysql = "SELECT * FROM stages ORDER BY id ASC";
+            return this.getStagesFromDB(mysql);
+        } catch (MonException e) {
+            throw e;
+        }
+    }
+
+    public List<Stage> rechercheLesStages(String recherche) throws MonException, ParseException {
+        try {
+            String mysql = "";
+            mysql = "SELECT * FROM stages WHERE libelle LIKE '%" + recherche + "%' ORDER BY id ASC";
+            return this.getStagesFromDB(mysql);
+        } catch (MonException e) {
+            throw e;
+        }
+    }
+
+    public List<Stage> getStagesFromDB(String request) throws MonException, ParseException{
         List<Object> rs;
         List<Stage> mesStages = new ArrayList<Stage>();
         int index = 0;
         try {
-            String mysql = "";
-
-            mysql = "SELECT * FROM stages ORDER BY id ASC";
-
-            rs = DialogueBd.lecture(mysql);
+            rs = DialogueBd.lecture(request);
 
             while (index < rs.size()) {
                 // On crée un stage
@@ -137,7 +166,6 @@ public class Stage {
                 index = index + 6;
                 mesStages.add(unS);
             }
-
             return mesStages;
 
         } catch (MonException e) {
@@ -146,34 +174,25 @@ public class Stage {
         }
     }
 
-    public List<Stage> rechercheLesStages(String recherche) throws MonException, ParseException {
+    public Stage getStageFromId(String id) throws MonException, ParseException{
         List<Object> rs;
-        List<Stage> mesStages = new ArrayList<Stage>();
         int index = 0;
+
         try {
-            String mysql = "";
+            String request = "SELECT * FROM stages WHERE id='" + id + "';";
+            rs = DialogueBd.lecture(request);
 
-            mysql = "SELECT * FROM stages WHERE libelle LIKE '%" + recherche + "%' ORDER BY id ASC";
-
-            rs = DialogueBd.lecture(mysql);
-
-            while (index < rs.size()) {
-                // On crée un stage
-                Stage unS = new Stage();
-                // il faut redecouper la liste pour retrouver les lignes
-                unS.setId(rs.get(index + 0).toString());
-                unS.setLibelle(rs.get(index + 1).toString());
-                DateFormat dateFormatpers = new SimpleDateFormat("yyyy-MM-dd");
-                unS.setDatedebut(dateFormatpers.parse(rs.get(index + 2).toString()));
-                unS.setDatefin((dateFormatpers.parse(rs.get(index + 3).toString())));
-                unS.setNbplaces(Integer.parseInt(rs.get(index + 4).toString()));
-                unS.setNbinscrits(Integer.parseInt(rs.get(index + 5).toString()));
-                // On incrémente tous les 6 champs
-                index = index + 6;
-                mesStages.add(unS);
-            }
-
-            return mesStages;
+            // On crée un stage
+            Stage unS = new Stage();
+            // il faut redecouper la liste pour retrouver les lignes
+            unS.setId(rs.get(index + 0).toString());
+            unS.setLibelle(rs.get(index + 1).toString());
+            DateFormat dateFormatpers = new SimpleDateFormat("yyyy-MM-dd");
+            unS.setDatedebut(dateFormatpers.parse(rs.get(index + 2).toString()));
+            unS.setDatefin((dateFormatpers.parse(rs.get(index + 3).toString())));
+            unS.setNbplaces(Integer.parseInt(rs.get(index + 4).toString()));
+            unS.setNbinscrits(Integer.parseInt(rs.get(index + 5).toString()));
+            return unS;
 
         } catch (MonException e) {
             System.out.println(e.getMessage());

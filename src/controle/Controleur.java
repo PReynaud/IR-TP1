@@ -16,7 +16,6 @@ import metier.*;
 import persistance.*;
 import meserreurs.*;
 
-
 @WebServlet("/Controleur")
 public class Controleur extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -27,6 +26,8 @@ public class Controleur extends HttpServlet {
     private static final String CHERCHER_TYPE = "recherche";
     private static final String AJOUT_STAGE = "ajoutStage";
     private static final String MODIFIER_STAGE = "modifierStage";
+    private static final String AJOUTER_MODIFICATION_STAGE = "ajouterModificationStage";
+    private static final String SELECT_STAGE = "selectStage";
     private static final String ERROR_PAGE = null;
 
     public Controleur() {
@@ -60,8 +61,8 @@ public class Controleur extends HttpServlet {
                 Stage unStage = new Stage();
                 unStage.setId(request.getParameter("id"));
                 unStage.setLibelle(request.getParameter("libelle"));
-                unStage.setDatedebut(conversionChaineenDate(request.getParameter("datedebut"), "yyyy/MM/dd"));
-                unStage.setDatefin(conversionChaineenDate(request.getParameter("datefin"), "yyyy/MM/dd"));
+                unStage.setDatedebut(conversionChaineenDate(request.getParameter("datedebut"), "dd/MM/yyyy"));
+                unStage.setDatefin(conversionChaineenDate(request.getParameter("datefin"), "dd/MM/yyyy"));
                 unStage.setNbplaces(Integer.parseInt(request.getParameter("nbplaces")));
                 unStage.setNbinscrits(Integer.valueOf((request.getParameter("nbplaces"))).intValue());
                 unStage.setNbinscrits(Integer.valueOf((request.getParameter("nbinscrits"))).intValue());
@@ -101,6 +102,41 @@ public class Controleur extends HttpServlet {
                 request.setAttribute("MesErreurs", e.getMessage());
                 destinationPage = "/Erreur.jsp";
             }
+        } else if (MODIFIER_STAGE.equals(actionName)){
+            try {
+                Stage unStage = new Stage();
+                listeStages = unStage.rechercheLesStages();
+                request.setAttribute("listeStages", listeStages);
+
+                if(parameters.size() > 1){
+                    String idStage = request.getParameter(SELECT_STAGE);
+                    //TO DO ajouter vérification
+                    Stage stageTrouve = unStage.getStageFromId(idStage);
+                    request.setAttribute("stage", stageTrouve);
+                }
+
+                destinationPage = "/modifierStage.jsp";
+            } catch (Exception e) {
+                request.setAttribute("MesErreurs", e.getMessage());
+                System.out.println(e.getMessage());
+            }
+        } else if(AJOUTER_MODIFICATION_STAGE.equals(actionName)){
+            try {
+                Stage unStage = new Stage();
+                unStage.setId(request.getParameter("id"));
+                unStage.setLibelle(request.getParameter("libelle"));
+                unStage.setDatedebut(conversionChaineenDate(request.getParameter("datedebut"), "dd/MM/yyyy"));
+                unStage.setDatefin(conversionChaineenDate(request.getParameter("datefin"), "dd/MM/yyyy"));
+                unStage.setNbplaces(Integer.parseInt(request.getParameter("nbplaces")));
+                unStage.setNbinscrits(Integer.valueOf((request.getParameter("nbplaces"))).intValue());
+                unStage.setNbinscrits(Integer.valueOf((request.getParameter("nbinscrits"))).intValue());
+                unStage.modificationStage(request.getParameter("id"));
+
+                destinationPage = "/modificationValidee.jsp";
+            } catch (Exception e) {
+                request.setAttribute("MesErreurs", e.getMessage());
+                System.out.println(e.getMessage());
+            }
         }
         // Redirection vers la page jsp appropriee
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(destinationPage);
@@ -110,7 +146,6 @@ public class Controleur extends HttpServlet {
     //L'appel de cette procédure se fait avec :
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
         try {
             processusTraiteRequete(request, response);
         } catch (Exception e) {
@@ -122,7 +157,6 @@ public class Controleur extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
         try {
             processusTraiteRequete(request, response);
         } catch (Exception e) {

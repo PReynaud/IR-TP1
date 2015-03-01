@@ -22,7 +22,13 @@ function Chargement() {
 
 jQuery(function($){
     $.datepicker.setDefaults($.datepicker.regional['fr']);
-    $('#dateNaissance').datepicker({
+    $('#datedebut').datepicker({
+        dateFormat: "dd/mm/yy",
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+00"
+    });
+    $('#datefin').datepicker({
         dateFormat: "dd/mm/yy",
         changeMonth: true,
         changeYear: true,
