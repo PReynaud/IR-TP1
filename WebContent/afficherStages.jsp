@@ -52,6 +52,12 @@ pageEncoding="ISO-8859-1" %>
                     </td>
                     <td>${item.nbplaces}</td>
                     <td>${item.nbinscrits}</td>
+                    <td>
+                        <a href="Controleur?action=suppressionStage&&id=${item.id}">
+                        <button type="button" class="btn btn-default" aria-label="Suppression">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button></a>
+                    </td>
                 </tr>
                 </c:forEach>
             </tbody>

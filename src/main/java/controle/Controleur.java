@@ -28,6 +28,7 @@ public class Controleur extends HttpServlet {
     private static final String MODIFIER_STAGE = "modifierStage";
     private static final String AJOUTER_MODIFICATION_STAGE = "ajouterModificationStage";
     private static final String SELECT_STAGE = "selectStage";
+    private static final String SUPPRIMER = "suppressionStage";
     private static final String ERROR_PAGE = null;
 
     public Controleur() {
@@ -136,6 +137,16 @@ public class Controleur extends HttpServlet {
             } catch (Exception e) {
                 request.setAttribute("MesErreurs", e.getMessage());
                 System.out.println(e.getMessage());
+            }
+        } else if (SUPPRIMER.equals(actionName)){
+            try{
+                Stage unStage=new Stage();
+                unStage.setId(request.getParameter("id"));
+                unStage.suppressionStage();
+                destinationPage = "/modificationValidee.jsp";
+            }catch (Exception e){
+                request.setAttribute("MesErreurs", e.getMessage());
+                destinationPage = "/Erreur.jsp";
             }
         }
         // Redirection vers la page jsp appropriee

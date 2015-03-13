@@ -103,6 +103,10 @@ public class Stage {
         }
     }
 
+    public void suppressionStage () throws MonException {
+        DialogueBd.insertionBD("DELETE FROM stages WHERE id='"+id+"'");
+    }
+
     public void modificationStage(String id) throws MonException {
         try {
             String mysql = "";
