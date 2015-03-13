@@ -1,4 +1,4 @@
-package controle;
+package main.java.controle;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 import java.text.*;
 
-import metier.*;
-import persistance.*;
-import meserreurs.*;
+import main.java.metier.*;
+import main.java.persistance.*;
+import main.java.meserreurs.*;
 
 @WebServlet("/Controleur")
 public class Controleur extends HttpServlet {

@@ -34,6 +34,7 @@ pageEncoding="ISO-8859-1" %>
                     <th>Date fin</th>
                     <th>Nombre de places</th>
                     <th>Nombre d'inscrits</th>
+                    <th>Supprimer</th>
                 </tr>
             </thead>
 
@@ -53,10 +54,11 @@ pageEncoding="ISO-8859-1" %>
                     <td>${item.nbplaces}</td>
                     <td>${item.nbinscrits}</td>
                     <td>
-                        <a href="Controleur?action=suppressionStage&&id=${item.id}">
-                        <button type="button" class="btn btn-default" aria-label="Suppression">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        </button></a>
+                        <a href="Controleur?action=suppressionStage&id=${item.id}">
+                            <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </a>
                     </td>
                 </tr>
                 </c:forEach>

@@ -1,9 +1,10 @@
-package persistance;
+package main.java.persistance;
 
 import java.sql.*;
 import java.util.*;
 
-import meserreurs.MonException;
+import main.java.persistance.Connexion;
+import main.java.meserreurs.MonException;
 
 
 public class DialogueBd {

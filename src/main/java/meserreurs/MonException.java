@@ -1,4 +1,4 @@
-package meserreurs;
+package main.java.meserreurs;
 
 public class MonException  extends Exception  implements java.io.Serializable {
     private String message;

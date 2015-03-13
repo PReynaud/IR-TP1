@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="TP1-bis">
-    <output-path>$PROJECT_DIR$/out/artifacts/TP1_bis</output-path>
-    <root id="archive" name="TP1-bis.war">
+  <artifact type="war" build-on-make="true" name="IR-TP1">
+    <output-path>$PROJECT_DIR$/out/artifacts/IR_TP1</output-path>
+    <root id="archive" name="IR-TP1.war">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="IR-TP1 - Part3" />

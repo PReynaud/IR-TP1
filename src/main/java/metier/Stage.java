@@ -1,4 +1,4 @@
-package metier;
+package main.java.metier;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -6,9 +6,9 @@ import java.text.SimpleDateFormat;
 
 import java.util.*;
 
-import persistance.DialogueBd;
+import main.java.persistance.DialogueBd;
 
-import meserreurs.MonException;
+import main.java.meserreurs.MonException;
 
 public class Stage {
 

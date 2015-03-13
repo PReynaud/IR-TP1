@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar-collapse">
+                        data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -14,7 +14,7 @@
                 <a class="navbar-brand" href="index.jsp">TP1 Informatique répartie</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-inverse navbar-nav">
                     <li><a href="index.jsp">Accueil</a></li>
                     <li><a href="Controleur?action=saisieStage">Saisie d'un stage</a></li>
                     <li><a href="Controleur?action=afficheStage">Affichage liste des stages</a></li>
