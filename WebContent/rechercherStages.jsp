@@ -18,7 +18,7 @@
 </head>
 <body>
 <jsp:include page='/header.jsp' flush="true"/>
-
+<div class="wrapper">
     <div class="row">
         <h2>Recherche des Stages</h2>
     </div>
@@ -68,7 +68,7 @@
             </div>
         </c:if>
     </div>
-
+</div>
 <jsp:include page='/footer.jsp' flush="true"/>
 </body>
 </html>

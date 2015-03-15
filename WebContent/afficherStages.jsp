@@ -18,7 +18,7 @@ pageEncoding="ISO-8859-1" %>
 </head>
 <body>
 <jsp:include page='/header.jsp' flush="true"/>
-
+<div class="wrapper">
 <div class="row">
 	<p align="center">
 		<h2>Listing&nbsp;des Stages</h2>
@@ -64,7 +64,7 @@ pageEncoding="ISO-8859-1" %>
         </table>
     </div>
 </div>
-
+</div>
 <jsp:include page='/footer.jsp' flush="true"/>
 </body>
 </html>

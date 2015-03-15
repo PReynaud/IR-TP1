@@ -17,7 +17,7 @@
 </head>
 <body>
 <jsp:include page='/header.jsp' flush="true"/>
-
+<div class="wrapper">
 <div class="row">
     <h1> Gestion des Stages HIGH TECH </h1>
 
@@ -28,6 +28,7 @@
     <h5>Son mot de passe est "epul"</h5>
 
 
+</div>
 </div>
 <jsp:include page='/footer.jsp' flush="true"/>
 

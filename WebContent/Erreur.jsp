@@ -14,10 +14,10 @@
 </head>
 <body>
     <jsp:include page='/header.jsp' flush="true"/>
-
+    <div class="wrapper">
     <h2>There is an error in the application, please contact the administrator</h2>
     <h3>${MesErreurs}</h3>
-
+        <div class="wrapper">
     <jsp:include page='/footer.jsp' flush="true"/>
 </body>
 </html>

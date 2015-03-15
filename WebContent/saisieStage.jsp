@@ -17,7 +17,7 @@ pageEncoding="ISO-8859-1"%>
 
 <body onLoad="Chargement();">
     <jsp:include page='/header.jsp' flush="true"/>
-
+    <div class="wrapper">
 	<div class="row">
 		<h1>Formulaire d'ajout d'un stage</h1>
 
@@ -70,7 +70,7 @@ pageEncoding="ISO-8859-1"%>
 			</div>
 		</form>
 	</div>
-
+</div>
     <jsp:include page='/footer.jsp' flush="true"/>
 </body>
 </html>
