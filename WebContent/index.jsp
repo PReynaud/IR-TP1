@@ -23,9 +23,10 @@
 
     <h2> Nous sommes le <%= DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL).format(new Date()) %>
     </h2>
-    <h5>Application de gestion des stages: Utilisation d'une base de données sous MySQL intitulée "messtages"</h5>
+    <h5>Application de gestion des stages: Utilisation d'une base de données sous MySQL intitulée "dsmesstages"</h5>
     <h5>Un utilisateur "userepul" possédant les bons droits d'administration est nécessaire</h5>
     <h5>Son mot de passe est "epul"</h5>
+    <h5>Si il y a une erreur telle que le pilote jdbc n'est pas chargée, c'est qu'il manque le mysql connector</h5>
 
 
 </div>
